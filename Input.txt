@@ -1,0 +1,26 @@
+report "ReporteEmpleado" {
+    header {
+        print("=== Reporte Oficial de Empleado ===", "\n");
+        print("Documento generado automáticamente", "\n");
+    }
+    
+    body {
+        nombre = getData.nombre(user);
+        cargo = getData.cargo(user);
+        salario = getData.salario(user);
+
+        print("Nombre: ", nombre);
+        print("Cargo: ", cargo);
+        print("Salario: $", salario);
+
+        print("\nLista de Proyectos:");
+        loop (getproyectos()) {
+            print("Proyecto: ", item.nombre, " - Estado: ", item.estado, "\n");
+        }
+    }
+    
+    footer {
+        print("=== Fin del Reporte ===", "\n");
+        print("Reporte generado el ", currentDate(), "\n");
+    }
+}
