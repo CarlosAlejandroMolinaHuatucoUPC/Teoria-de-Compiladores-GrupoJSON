@@ -70,11 +70,13 @@ functionCall
 
 primaryExpression
     : STRING
-    | NUMBER
+    | number // Añadido
+    | id     // Añadido
     | BOOLEAN
-    | ID ('.' ID | arrayIndex)*
     ;
 
+id: ID ('.' ID | arrayIndex)* ;
+number: NUMBER ;
 arrayIndex
     : '[' expression ']'
     ;
@@ -90,4 +92,4 @@ RBRACK: ']';
 ID : [a-zA-Z_][a-zA-Z0-9_]* ;
 NUMBER: [0-9]+ ('.' [0-9]+)? ;
 STRING: '"' (~["\r\n])* '"' ;
-WS: [ \t\r\n]+ -> skip;
+WS: [ \t\r\n]+ -> skip;
